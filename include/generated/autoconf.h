@@ -1,7 +1,7 @@
 /*
  *
  * Automatically generated file; DO NOT EDIT.
- * Linux/arm 3.4.0-LeeDrOiD Kernel Configuration
+ * Linux/arm 3.4.0 Kernel Configuration
  *
  */
 #define CONFIG_IP6_NF_MATCH_AH 1
@@ -308,6 +308,7 @@
 #define CONFIG_DUTY_CYCLE_LIMIT 1
 #define CONFIG_CRYPTO_DEV_QCRYPTO_MODULE 1
 #define CONFIG_PPPOE 1
+#define CONFIG_HD_AUDIO 1
 #define CONFIG_REED_SOLOMON_DEC8 1
 #define CONFIG_IRQ_WORK 1
 #define CONFIG_IP_ADVANCED_ROUTER 1
@@ -860,7 +861,7 @@
 #define CONFIG_DEBUG_KERNEL 1
 #define CONFIG_MSM_VIDC_V4L2 1
 #define CONFIG_COMPAT_BRK 1
-#define CONFIG_LOCALVERSION ""
+#define CONFIG_LOCALVERSION "-LeeDrOiD-M8-1.00"
 #define CONFIG_RADIO_IRIS 1
 #define CONFIG_DVB_STV6110x_MODULE 1
 #define CONFIG_RADIO_ADAPTERS 1

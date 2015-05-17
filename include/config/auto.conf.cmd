@@ -807,7 +807,7 @@ deps_config := \
 include/config/auto.conf: \
 	$(deps_config)
 
-ifneq "$(KERNELVERSION)" "3.4.0-LeeDrOiD"
+ifneq "$(KERNELVERSION)" "3.4.0"
 include/config/auto.conf: FORCE
 endif
 ifneq "$(ARCH)" "arm"
