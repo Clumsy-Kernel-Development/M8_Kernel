@@ -1,0 +1,2 @@
+kernel/drivers/bluetooth/hci_smd.ko
+kernel/drivers/bluetooth/bluetooth-power.ko

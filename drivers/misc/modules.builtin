@@ -1,0 +1,6 @@
+kernel/drivers/misc/smsc_hub.ko
+kernel/drivers/misc/isa1200.ko
+kernel/drivers/misc/qseecom.ko
+kernel/drivers/misc/ti_drv2667.ko
+kernel/drivers/misc/qpnp-misc.ko
+kernel/drivers/misc/qpnp-vibrator.ko

@@ -1,0 +1,6 @@
+kernel/drivers/i2c/chips/pn544.ko
+kernel/drivers/i2c/chips/tfa9887.ko
+kernel/drivers/i2c/chips/tfa9887l.ko
+kernel/drivers/i2c/chips/rt5506.ko
+kernel/drivers/i2c/chips/cm32181.ko
+kernel/drivers/i2c/chips/CwMcuSensor.ko
