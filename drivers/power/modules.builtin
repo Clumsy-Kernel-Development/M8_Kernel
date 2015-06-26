@@ -1,3 +1,0 @@
-kernel/drivers/power/power_supply.ko
-kernel/drivers/power/qpnp-bms.ko
-kernel/drivers/power/qpnp-charger.ko
