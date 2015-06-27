@@ -51,6 +51,10 @@ fi
 echo " Finish time: $(date +"%r")"
 echo
 
+echo " Making master dtb image."
+
+./scripts/dtbTool -s 2048 -o arch/arm/boot/dt.img -p scripts/dtc/ arch/arm/boot/
+
 read -p "Would you like to make flashable zip (y/n)? " -n 1 -r
 echo  
 if [[ ! $REPLY =~ ^[Yy]$ ]]
@@ -73,6 +77,8 @@ cp bootimg/boot.img boot.img
 bash unpackimg.sh boot.img > ~/null
 
 cp $dir/arch/arm/boot/zImage ~/AIK-Linux/split_img/boot.img-zImage
+cp $dir/arch/arm/boot/dt.img ~/AIK-Linux/split_img/boot.img-dtb
+
 
 bash repackimg.sh > ~/null
 
@@ -82,6 +88,7 @@ cp image-new.img $dest/boot.img
 echo "-> Making flashable zip"
 cd $dir
 find . -name '*ko' -exec cp '{}' $dest/system/lib/modules/ \;
+cp /home/tom/xda/kernel/Other_Modules/s2s_mod.ko $dest/system/lib/modules/s2s_mod.ko
 sleep 5s
 
 cd $dest
