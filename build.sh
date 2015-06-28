@@ -53,7 +53,8 @@ echo
 
 echo " Making master dtb image."
 
-./scripts/dtbTool -s 2048 -o arch/arm/boot/dt.img -p scripts/dtc/ arch/arm/boot/
+#./scripts/dtbTool -s 2048 -o arch/arm/boot/dt.img -p scripts/dtc/ arch/arm/boot/
+./scripts/dtbToolCM -o arch/arm/boot/dt.img -s 2048 -d "htc,project-id = <" -p ./scripts/dtc/ ./arch/arm/boot/
 
 read -p "Would you like to make flashable zip (y/n)? " -n 1 -r
 echo  
