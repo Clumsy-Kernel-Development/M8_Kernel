@@ -79,6 +79,7 @@ bash unpackimg.sh boot.img > ~/null
 
 cp $dir/arch/arm/boot/zImage ~/AIK-Linux/split_img/boot.img-zImage
 cp $dir/arch/arm/boot/dt.img ~/AIK-Linux/split_img/boot.img-dtb
+echo "console=ttyHSL0,115200,n8 androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x3b7 ehci-hcd.park=3" > ~/AIK-Linux/split_img/boot.img-cmdline
 
 
 bash repackimg.sh > ~/null
