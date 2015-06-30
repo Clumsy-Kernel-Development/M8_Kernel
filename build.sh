@@ -94,7 +94,8 @@ cp /home/tom/xda/kernel/Other_Modules/s2s_mod.ko $dest/system/lib/modules/s2s_mo
 sleep 5s
 
 cd $dest
-
+str="ui_print(\"by LeeDrOiD and Clumsy Version $version\");"
+sed -i "7s/.*/$str/" META-INF/com/google/android/updater-script
 
 zip -r LeeDrOiD_M8_kernel_$version.zip ./
 chown tom:adm LeeDrOiD_M8_kernel_$version.zip
