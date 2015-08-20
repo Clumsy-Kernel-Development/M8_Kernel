@@ -84,7 +84,7 @@ echo "console=ttyHSL0,115200,n8 androidboot.hardware=qcom user_debug=31 msm_rtb.
 echo "-> Making flashable zip"
 cd $dir
 find . -name '*ko' -exec cp '{}' $dest/system/lib/modules/ \;
-cp /home/tom/xda/kernel/Other_Modules/s2s_mod.ko $dest/system/lib/modules/s2s_mod.ko
+#cp /home/tom/xda/kernel/Other_Modules/s2s_mod.ko $dest/system/lib/modules/s2s_mod.ko
 
 cd $dest
 
