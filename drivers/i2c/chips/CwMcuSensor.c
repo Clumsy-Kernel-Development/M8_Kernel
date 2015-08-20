@@ -666,7 +666,6 @@ static int set_k_value_proximity_f(struct device *dev,struct device_attribute *a
 }
 #if 0
 static int CWMCU_Set_Calibrator_Pressure(u8 sensor_id, u8 *data){
-
 	int error_msg = 0;
 	
 	u8 datatemp0,datatemp1,datatemp2,datatemp3;
@@ -675,7 +674,6 @@ static int CWMCU_Set_Calibrator_Pressure(u8 sensor_id, u8 *data){
 	datatemp2 =0x86;
 	datatemp1 =0x82;
 	datatemp0 =0x82;
-
 	for(i=0;i<=3;i++){
 		
 		printk("Set_Calibrator_Pressure data[%d] is %x datatemp[%d] is %x\n",i,data[i],i,datatemp[i]);
@@ -928,7 +926,7 @@ static int get_proximity(struct device *dev, struct device_attribute *attr, char
 	return snprintf(buf, PAGE_SIZE, "%x %x \n",data[0],data2);
 }
 
-ifdef CONFIG_TOUCHSCREEN_SYNAPTICS_WAKE_GESTURES
+#ifdef CONFIG_TOUCHSCREEN_SYNAPTICS_WAKE_GESTURES
 extern int cam_switch;
 
 static int proximity_flag = 0;
@@ -1448,7 +1446,6 @@ static int active_set(struct device *dev,struct device_attribute *attr,const cha
 	if(sensor->enabled_list){
 		gpio_set_value(mcu_data->gpio_wake_mcu,1);
 		usleep_range(1 * 10000, 1 * 10000);
-
 	}
 	else{
 		
@@ -1551,7 +1548,6 @@ static int interval_set(struct device *dev, struct device_attribute *attr, const
 #if 0
 	sensor->sensors_time[sensors_id] = 0;
 	sensor->report_period[sensors_id] = val*1000;
-
 	printk("CYWEE sensors_id=%d delay_ms=%d\n",sensors_id, sensor->report_period[sensors_id]);
 #endif
         mcu_data->sensors_time[sensors_id] = 0;
@@ -1698,7 +1694,6 @@ static DEVICE_ATTR(enable, 0666, active_show,
 		   active_set);
 static DEVICE_ATTR(delay_ms, 0666, interval_show,
 		   interval_set);
-
 static DEVICE_ATTR(calibrator_en, 0666, NULL, set_calibrator_en);
 static DEVICE_ATTR(calibrator_status_acc, 0666, show_calibrator_status_acc, NULL);
 static DEVICE_ATTR(calibrator_status_mag, 0666, show_calibrator_status_mag, NULL);
@@ -1706,7 +1701,6 @@ static DEVICE_ATTR(calibrator_status_gyro, 0666, show_calibrator_status_gyro, NU
 static DEVICE_ATTR(calibrator_data_acc, 0666, get_k_value_acc_f, set_k_value_acc_f);
 static DEVICE_ATTR(calibrator_data_mag, 0666, get_k_value_mag_f, set_k_value_mag_f);
 static DEVICE_ATTR(calibrator_data_gyro, 0666, get_k_value_gyro_f, set_k_value_gyro_f);
-
 static struct attribute *sysfs_attributes[] = {
 	&dev_attr_enable.attr,
 	&dev_attr_delay_ms.attr,
@@ -1719,7 +1713,6 @@ static struct attribute *sysfs_attributes[] = {
 	&dev_attr_calibrator_data_gyro.attr,
 	NULL
 };
-
 static struct attribute_group sysfs_attribute_group = {
 	.attrs = sysfs_attributes
 };
@@ -1987,7 +1980,6 @@ static void CWMCU_read(struct CWMCU_data *sensor)
 			
 			
 			sensor->sensors_time[Proximity] = sensor->sensors_time[Proximity] - sensor->report_period[Proximity];
-
 			if ((sensor->filter_first_zeros[Proximity] == 1) &&
 			    ((data_buff[0] == -1) && (data_buff[1] == -1) && (data_buff[2] == -1))
 			   ) {
@@ -2273,7 +2265,6 @@ static void CWMCU_read(struct CWMCU_data *sensor)
                 else
 			sensor->sensors_time[Gesture_Motion] = 0;
 	}
-
 #endif
 
 	if (sensor->enabled_list & (1 << Buffered_Transport)) {
