@@ -3,10 +3,10 @@
 dir=~/xda/kernel/M8_Kernel
 dest=~/xda/LeeDrOiD_M8_Kernel
 date=$(date +%d-%m-%y)
-export PATH=/usr/bin:$PATH
+export PATH=/home/tom/xda/kernel/toolchains/arm/linaro_4.9.4/bin:$PATH
 export ARCH=arm
 export SUBARCH=arm
-export CROSS_COMPILE=arm-none-eabi-
+export CROSS_COMPILE=arm-eabi-
 export KBUILD_BUILD_USER=root
 
 #Get Version Number
