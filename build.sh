@@ -18,7 +18,8 @@ read -p "Would you like to clean (y/n)? " -n 1 -r
 echo    
 if [[ ! $REPLY =~ ^[Nn]$ ]]
 then
-    make clean ARCH=arm CROSS_COMPILE=arm-eabi-
+    make clean 
+    make mrproper
 fi
 
 #Set Local Version String
@@ -27,7 +28,7 @@ VER="-LeeDrOiD_M8_$version"
 DATE_START=$(date +"%s")
 
 
-make ARCH=arm CROSS_COMPILE=arm-eabi- clumsy_defconfig
+make clumsy_defconfig
 str="CONFIG_LOCALVERSION=\"$VER\""
 sed -i "45s/.*/$str/" .config
 read -p "Would you like to see menu config (y/n)? " -n 1 -r
@@ -35,10 +36,10 @@ echo
    
 if [[ ! $REPLY =~ ^[Nn]$ ]]
 then
-    make ARCH=arm CROSS_COMPILE=arm-eabi- menuconfig
+    make menuconfig
 fi 
 
-make -j4 ARCH=arm CROSS_COMPILE=arm-eabi-
+make -j4 
 DATE_END=$(date +"%s")
 DIFF=$(($DATE_END - $DATE_START))
 echo
