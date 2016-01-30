@@ -2046,6 +2046,46 @@ uint8_t i;
                         extended_tag_code = p_data_u.p_CEA_data_block->payload_u.extended_tag;
                         switch (extended_tag_code.etc)
                         {
+   			    case ETC_VENDOR_SPECIFIC_VIDEO_DATA_BLOCK:
+				{
+				break;
+				}
+			    case ETC_VESA_VIDEO_DISPLAY_DEVICE_INFORMATION_DATA_BLOCK:
+				{
+				break;
+				}
+			    case ETC_VESA_VIDEO_DATA_BLOCK:
+				{
+				break;
+				}
+			    case ETC_HDMI_VIDEO_DATA_BLOCK:
+				{
+				break;
+				}
+			    case ETC_VIDEO_RELATED:
+				{
+				break;
+				}
+			    case ETC_CEA_MISC_AUDIO_FIELDS:
+				{
+				break;
+				}
+			    case ETC_VENDOR_SPECIFIC_AUDIO_DATA_BLOCK:
+				{
+				break;
+				}
+			    case ETC_HDMI_AUDIO_DATA_BLOCK:
+				{
+				break;
+				}
+			    case ETC_AUDIO_RELATED:
+				{
+				break;
+				}
+			    case ETC_GENERAL:
+				{
+				break;
+				}
                             case ETC_VIDEO_CAPABILITY_DATA_BLOCK:
                                 {
                                 Pvideo_capability_data_block_t p_video_capability_data_block = (Pvideo_capability_data_block_t)p_data_u.puc_data_block;

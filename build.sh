@@ -3,7 +3,7 @@
 dir=~/xda/kernel/M8_Kernel
 dest=~/xda/LeeDrOiD_M8_Kernel
 date=$(date +%d-%m-%y)
-export PATH=/home/tom/xda/kernel/toolchains/arm/linaro_4.9.4/bin:$PATH
+export PATH=/home/tom/xda/kernel/toolchains/arm/linaro_5.2/bin:$PATH
 export ARCH=arm
 export SUBARCH=arm
 export CROSS_COMPILE=arm-eabi-
@@ -20,6 +20,8 @@ if [[ ! $REPLY =~ ^[Nn]$ ]]
 then
     make clean 
     make mrproper
+    rm .config
+    rm arch/arm/boot/dt.img
 fi
 
 #Set Local Version String
@@ -93,7 +95,7 @@ str1="ini_set(\"rom_version\",          \"V$version\");"
 sed -i "42s/.*/$str1/" META-INF/com/google/android/aroma-config
 str2="ini_set(\"rom_date\",             \"$date\");"
 sed -i "43s/.*/$str2/" META-INF/com/google/android/aroma-config
-str3="ui_print(\"LeeDrOiD M8 Kernel by Clumsy, Version $version\");"
+str3="ui_print(\"Clumsy M8 Kernel by ~clumsy~, Version $version\");"
 sed -i "9s/.*/$str3/" META-INF/com/google/android/updater-script
 
 zip -r LeeDrOiD_M8_kernel_$version.zip ./
