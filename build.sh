@@ -26,7 +26,7 @@ fi
 
 #Set Local Version String
 rm .version
-VER="-LeeDrOiD_M8_$version"
+VER="-~clumsy~_M8_$version"
 DATE_START=$(date +"%s")
 
 
