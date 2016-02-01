@@ -1,0 +1,7 @@
+.config
+scripts/basic/.fixdep.cmd
+scripts/kconfig/.conf.cmd
+scripts/kconfig/.conf.o.cmd
+scripts/kconfig/.zconf.tab.o.cmd
+scripts/kconfig/conf.o
+scripts/kconfig/zconf.tab.o
