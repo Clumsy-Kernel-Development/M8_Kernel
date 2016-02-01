@@ -1,7 +1,7 @@
 #!/bin/bash
 #Define Paths
 dir=~/xda/kernel/M8_Kernel
-dest=~/xda/LeeDrOiD_M8_Kernel
+dest=~/xda/clumsy_M8_Kernel
 date=$(date +%d-%m-%y)
 export PATH=/home/tom/xda/kernel/toolchains/arm/linaro_5.2/bin:$PATH
 export ARCH=arm
@@ -95,16 +95,16 @@ str1="ini_set(\"rom_version\",          \"V$version\");"
 sed -i "42s/.*/$str1/" META-INF/com/google/android/aroma-config
 str2="ini_set(\"rom_date\",             \"$date\");"
 sed -i "43s/.*/$str2/" META-INF/com/google/android/aroma-config
-str3="ui_print(\"Clumsy M8 Kernel by ~clumsy~, Version $version\");"
+str3="ui_print(\"Clumsy M8 Kernel by ~clumsy~ Version $version\");"
 sed -i "9s/.*/$str3/" META-INF/com/google/android/updater-script
 
-zip -r LeeDrOiD_M8_kernel_$version.zip ./
+zip -r clumsy_M8_Kernel_$version.zip ./
 
-md5sum "LeeDrOiD_M8_kernel_$version.zip" > "LeeDrOiD_M8_kernel_$version.zip.md5"
-chown tom:adm LeeDrOiD_M8_kernel_$version.zip
-chown tom:adm LeeDrOiD_M8_kernel_$version.zip.md5
-mv LeeDrOiD_M8_kernel_$version.zip ~/xda/Flashable_Kernels/LeeDrOiD_M8_kernel_$version.zip
-mv LeeDrOiD_M8_kernel_$version.zip.md5 ~/xda/Flashable_Kernels/LeeDrOiD_M8_kernel_$version.zip.md5
+md5sum "clumsy_M8_Kernel_$version.zip" > "clumsy_M8_Kernel_$version.zip.md5"
+chown tom:adm clumsy_M8_Kernel_$version.zip
+chown tom:adm clumsy_M8_Kernel_$version.zip.md5
+mv clumsy_M8_Kernel_$version.zip ~/xda/Flashable_Kernels/.
+mv clumsy_M8_Kernel_$version.zip.md5 ~/xda/Flashable_Kernels/.
 
 echo "-> Done"
 
