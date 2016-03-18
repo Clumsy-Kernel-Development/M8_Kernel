@@ -2216,26 +2216,23 @@ uint8_t i;
                                 Pvideo_capability_data_payload_t p_payload = &p_video_capability_data_block->payload;
                                 mhl_edid_3d_data->parse_data.video_capability_flags = *((uint8_t *)p_payload);
                                 mhl_edid_3d_data->parse_data.p_video_capability_data_block = p_video_capability_data_block;
-                					MHL_TX_EDID_INFO(mhl_edid_3d_data->dev_context,
-                							"EDID -> Short Descriptor Video Capability Block\n");
+                		MHL_TX_EDID_INFO(mhl_edid_3d_data->dev_context,"EDID -> Short Descriptor Video Capability Block\n");
                                 }
-            					break;
-
-							case ETC_COLORIMETRY_DATA_BLOCK:
-								{
-									Pcolorimetry_data_block_t p_colorimetry_data_block = (Pcolorimetry_data_block_t)p_data_u.puc_data_block;
-									Pcolorimetry_data_payload_t p_payload= &p_colorimetry_data_block->payload;
-									mhl_edid_3d_data->parse_data.colorimetry_support_flags = p_payload->ci_data.xvYCC;
-									mhl_edid_3d_data->parse_data.meta_data_profile         = p_payload->cm_meta_data.meta_data;
-								}
-
-								MHL_TX_EDID_INFO(mhl_edid_3d_data->dev_context,
-										"EDID -> Short Descriptor Colorimetry Block\n");
-								break;
-						}
-					}
-
+				case ETC_COLORIMETRY_DATA_BLOCK:
+				{
+				Pcolorimetry_data_block_t p_colorimetry_data_block = (Pcolorimetry_data_block_t)p_data_u.puc_data_block;
+				Pcolorimetry_data_payload_t p_payload= &p_colorimetry_data_block->payload;
+				mhl_edid_3d_data->parse_data.colorimetry_support_flags = p_payload->ci_data.xvYCC;
+				mhl_edid_3d_data->parse_data.meta_data_profile         = p_payload->cm_meta_data.meta_data;
+				MHL_TX_EDID_INFO(mhl_edid_3d_data->dev_context,"EDID -> Short Descriptor Colorimetry Block\n");
+				}
+				default:
 					break;
+				break;
+			}
+		}
+
+		break;
 
                 case DBTC_VENDOR_SPECIFIC_DATA_BLOCK:
                     {
