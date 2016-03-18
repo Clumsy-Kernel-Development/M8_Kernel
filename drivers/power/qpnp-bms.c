@@ -2135,7 +2135,8 @@ static int report_voltage_based_soc(struct qpnp_bms_chip *chip)
 #define REPORT_SOC_WAIT_MS		10000
 static int report_cc_based_soc(struct qpnp_bms_chip *chip)
 {
-	int soc, soc_change;
+	int soc = 0;
+	int soc_change = 0;
 	int time_since_last_change_sec, charge_time_sec = 0;
 	unsigned long last_change_sec;
 	struct timespec now;
@@ -2612,7 +2613,8 @@ static int calculate_raw_soc(struct qpnp_bms_chip *chip,
 					struct soc_params *params,
 					int batt_temp)
 {
-	int soc, remaining_usable_charge_uah;
+	int soc = 0;
+	int remaining_usable_charge_uah = 0;
 
 	
 	remaining_usable_charge_uah = params->ocv_charge_uah
@@ -2673,8 +2675,11 @@ static int calculate_state_of_charge(struct qpnp_bms_chip *chip,
 					int batt_temp)
 {
 	struct soc_params params;
-	int soc, previous_soc, shutdown_soc, new_calculated_soc;
-	int remaining_usable_charge_uah;
+	int soc = 0;
+	int previous_soc = 0;
+	int shutdown_soc = 0;
+	int new_calculated_soc = 0;
+	int remaining_usable_charge_uah = 0;
 	int bms_reveal_FCC = 0;
 #ifdef CONFIG_MACH_M8
 	int id_raw_bms = 0;

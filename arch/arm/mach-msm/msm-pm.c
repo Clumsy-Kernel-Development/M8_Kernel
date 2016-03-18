@@ -1018,7 +1018,7 @@ bool msm_cpu_pm_check_mode(unsigned int cpu, enum msm_pm_sleep_mode mode,
 
 int msm_cpu_pm_enter_sleep(enum msm_pm_sleep_mode mode, bool from_idle)
 {
-	int64_t time;
+	int64_t time = 0;
 	bool collapsed = 1;
 	int exit_stat = -1;
 
@@ -1061,7 +1061,7 @@ static int cpu_shutdown_retry_max[NR_CPUS];
 
 int msm_pm_wait_cpu_shutdown(unsigned int cpu)
 {
-	int timeout;
+	int timeout = 0;
 
 	if (!msm_pm_slp_sts)
 		return 0;

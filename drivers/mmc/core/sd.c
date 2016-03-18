@@ -256,7 +256,7 @@ out:
 
 static int mmc_read_switch(struct mmc_card *card)
 {
-	int err;
+	int err = 0;
 	u8 *status;
 
 	if (card->scr.sda_vsn < SCR_SPEC_VER_1)
@@ -339,7 +339,7 @@ out:
 
 int mmc_sd_switch_hs(struct mmc_card *card)
 {
-	int err;
+	int err = 0;
 	u8 *status;
 
 	card->sw_caps.uhs_max_dtr = 0;
@@ -389,7 +389,7 @@ static int sd_select_driver_type(struct mmc_card *card, u8 *status)
 	int host_drv_type = SD_DRIVER_TYPE_B;
 	int card_drv_type = SD_DRIVER_TYPE_B;
 	int drive_strength;
-	int err;
+	int err = 0;
 
 	if (!(card->host->caps & (MMC_CAP_DRIVER_TYPE_A | MMC_CAP_DRIVER_TYPE_C
 	    | MMC_CAP_DRIVER_TYPE_D)))
@@ -473,7 +473,7 @@ static void sd_update_bus_speed_mode(struct mmc_card *card)
 
 static int sd_set_bus_speed_mode(struct mmc_card *card, u8 *status)
 {
-	int err;
+	int err = 0;
 	unsigned int timing = 0;
 
 	switch (card->sd_bus_speed) {
@@ -519,7 +519,7 @@ static int sd_set_bus_speed_mode(struct mmc_card *card, u8 *status)
 static int sd_set_current_limit(struct mmc_card *card, u8 *status)
 {
 	int current_limit = 0;
-	int err;
+	int err = 0;
 
 	if ((card->sd_bus_speed == UHS_SDR50_BUS_SPEED) ||
 	    (card->sd_bus_speed == UHS_SDR104_BUS_SPEED) ||
@@ -618,7 +618,7 @@ out:
 
 static int mmc_sd_init_uhs_card(struct mmc_card *card)
 {
-	int err;
+	int err = 0;
 	u8 *status;
 
 	if (!card->scr.sda_spec3)
@@ -722,7 +722,7 @@ struct device_type sd_type = {
 
 int mmc_sd_get_cid(struct mmc_host *host, u32 ocr, u32 *cid, u32 *rocr)
 {
-	int err;
+	int err = 0;
 
 	mmc_go_idle(host);
 
@@ -764,7 +764,7 @@ try_again:
 
 int mmc_sd_get_csd(struct mmc_host *host, struct mmc_card *card)
 {
-	int err;
+	int err = 0;
 
 	err = mmc_send_csd(card, card->raw_csd);
 	if (err)
@@ -780,7 +780,7 @@ int mmc_sd_get_csd(struct mmc_host *host, struct mmc_card *card)
 int mmc_sd_setup_card(struct mmc_host *host, struct mmc_card *card,
 	bool reinit)
 {
-	int err;
+	int err = 0;
 #ifdef CONFIG_MMC_PARANOID_SD_INIT
 	int retries;
 #endif
@@ -1069,7 +1069,7 @@ static int mmc_sd_suspend(struct mmc_host *host)
 
 static int mmc_sd_resume(struct mmc_host *host)
 {
-	int err;
+	int err = 0;
 #ifdef CONFIG_MMC_PARANOID_SD_INIT
 	int retries;
 	int delayTime;
@@ -1168,7 +1168,7 @@ static void mmc_sd_attach_bus_ops(struct mmc_host *host)
 
 int mmc_attach_sd(struct mmc_host *host)
 {
-	int err;
+	int err = 0;
 	u32 ocr;
 #ifdef CONFIG_MMC_PARANOID_SD_INIT
 	int retries;
