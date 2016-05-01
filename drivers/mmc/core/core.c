@@ -51,7 +51,6 @@
 #define CREATE_TRACE_POINTS
 #include <trace/events/mmc.h>
 #include <trace/events/mmcio.h>
-#include <trace/events/f2fs.h>
 
 static void mmc_clk_scaling(struct mmc_host *host, bool from_wq);
 
