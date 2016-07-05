@@ -97,3 +97,4 @@
 		wcd-intr-gpio-dir = <0>; //input
 	};
 };
+
