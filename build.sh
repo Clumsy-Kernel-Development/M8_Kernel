@@ -1,11 +1,11 @@
 #!/bin/bash
 #Define Paths
 dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-dest=~/xda/MM_M8_Kernel
-dtbTool=/home/tom/xda/kernel/toolchains/dtbToolCM
+
+dtbTool=~/toolchains/dtbToolCM
 date=$(date +%d-%m-%y)
 rm -r $dest
-export PATH=/home/tom/xda/kernel/toolchains/arm/linaro_5.2/bin:$PATH
+export PATH=~/toolchains/arm/linaro_5.2/bin:$PATH
 export ARCH=arm
 export SUBARCH=arm
 export CROSS_COMPILE=arm-eabi-
@@ -14,6 +14,9 @@ export KBUILD_BUILD_USER=root
 #Get Version Number
 echo "Please enter version number: "
 read version
+
+echo "Please enter device (m8, m8wl, m8whl, m8dug): "
+read device
 
 #Ask user if they would like to clean
 read -p "Would you like to clean (y/n)? " -n 1 -r
@@ -27,11 +30,36 @@ fi
 
 #Set Local Version String
 rm .version
-VER="-clumsy_M8_$version"
+rm arch/arm/boot/*.dtb
+VER="-clumsy_$device_$version"
 DATE_START=$(date +"%s")
 
+if [ "$device" = "m8" ]
+then
+	echo "######### Making M8 Device kernel ###########"
+	make clumsy_defconfig
+	dest=~/xda/MM_M8_Kernel/international
+fi
+if [ "$device" = "m8wl" ]
+then
+	echo "######### Making M8WL Device kernel ###########"
+	make clumsy_m8wl_defconfig
+	dest=~/xda/MM_M8_Kernel/verizon
+fi
+if [ "$device" = "m8whl" ]
+then
+	echo "######### Making M8WHL Device kernel ###########"
+	make clumsy_m8whl_defconfig
+	dest=~/xda/MM_M8_Kernel/sprint
+fi
+if [ "$device" = "m8dug" ]
+then
+	echo "######### Making M8DUG Device kernel ###########"
+	make clumsy_m8dug_defconfig
+	dest=~/xda/MM_M8_Kernel/dual
+fi
+rm -r $dest > /dev/null
 
-make clumsy_defconfig
 str="CONFIG_LOCALVERSION=\"$VER\""
 sed -i "45s/.*/$str/" .config
 read -p "Would you like to see menu config (y/n)? " -n 1 -r
@@ -60,14 +88,12 @@ mkdir -p $dest
 echo "Making dt.img"
 $dtbTool -o arch/arm/boot/dt.img -s 2048 -d "htc,project-id = <" -p scripts/dtc/ arch/arm/boot/ > /dev/null
 
-echo "Echoing cmd line"
-mkdir -p $dest/cmdline
-echo "console=ttyHSL0,115200,n8 androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x3b7 ehci-hcd.park=3" > $dest/cmdline/cmdline
-
-mkdir -p $dest/system/lib/modules/
-find . -name '*ko' -exec cp '{}' $dest/system/lib/modules/ \;
-cp arch/arm/boot/zImage $dest/.
-cp arch/arm/boot/dt.img $dest/.
+mkdir -p $dest/modules/
+mkdir -p $dest/dt/
+mkdir -p $dest/zImage/
+find . -name '*ko' -exec cp '{}' $dest/modules/ \;
+cp arch/arm/boot/zImage $dest/zImage/.
+cp arch/arm/boot/dt.img $dest/dt/.
 
 
 echo "-> Done"
